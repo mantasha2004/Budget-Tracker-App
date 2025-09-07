@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Budget Tracker</title>
+  <!-- Chart.js for Charts -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js" defer></script>
+  <link rel="stylesheet" href="budget.css">
+</head>
+<body>
+  <div class="container">
+    <h1>Budget Tracker</h1>
+    
+    <!-- Dark Mode Toggle -->
+    <div style="text-align: center; margin-bottom: 15px;">
+      <button id="themeToggle">🌙 Dark Mode</button>
+    </div>
+
+    <div id="summary" class="card">
+      <p>Total Income: <span id="totalIncome">₹0</span></p>
+      <p>Total Expense: <span id="totalExpense">₹0</span></p>
+      <p><b>Net Balance: <span id="netBalance">₹0</span></b></p>
+    </div>
+
+    <!-- Form -->
+    <form id="txnForm" class="card">
+      <input type="text" id="title" placeholder="Title (e.g. Salary, Food)" required />
+      <input type="number" id="amount" placeholder="Amount" required />
+      <select id="type">
+        <option value="Income">Income</option>
+        <option value="Expense">Expense</option>
+      </select>
+      <button type="submit">Add Transaction</button>
+      <button type="button" id="clearAll">Clear All</button>
+    </form>
+
+    <!-- Filter -->
+    <div class="card">
+      <label>Filter: </label>
+      <select id="filterType">
+        <option value="All">All</option>
+        <option value="Income">Income</option>
+        <option value="Expense">Expense</option>
+      </select>
+    </div>
+
+    <!-- Charts -->
+    <div class="card">
+      <h3 style="text-align:center;">Income vs Expense (Pie)</h3>
+      <canvas id="pieChart"></canvas>
+    </div>
+
+    <div class="card">
+      <h3 style="text-align:center;">Income vs Expense (%)</h3>
+      <canvas id="barChart"></canvas>
+    </div>
+
+    <!-- Transaction List -->
+    <div class="card">
+      <h3>Transactions</h3>
+      <table>
+        <thead>
+          <tr>
+            <th>Time</th>
+            <th>Title</th>
+            <th>Amount</th>
+            <th>Type</th>
+            <th>Action</th>
+          </tr>
+        </thead>
+        <tbody id="txnTable"></tbody>
+      </table>
+    </div>
+
+  </div>
+
+  <script src="budget.js"></script>
+</body>
+</html>
